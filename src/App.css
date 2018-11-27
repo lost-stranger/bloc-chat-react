@@ -8,14 +8,22 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  background-color: white;
+  float: right;
+  width: 80%;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.room-list {
+  text-align: left;
+  padding-left: 10px;
+  float: left;
+  width: 18%;
+  background-color: 	#E8E8E8;
+  padding-bottom:538px;
 }
 
 .App-link {
