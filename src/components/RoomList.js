@@ -23,8 +23,9 @@ class RoomList extends Component {
         <div className="rooms">
         {
           this.state.rooms.map( (room) =>
-          <p id="room">{
-            room.name.charAt(0).toUpperCase()+room.name.slice(1,4) + " " + room.name.slice(4,5)}</p>
+          <li id="room">{
+            room.name.charAt(0).toUpperCase()+room.name.slice(1,4) + " " + room.name.slice(4,5)}
+            </li>
           )
         }
         </div>
