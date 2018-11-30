@@ -17,14 +17,32 @@
   color: white;
 }
 
-.room-list {
+.room-menu {
   text-align: left;
-  padding-left: 10px;
+  padding-left: 30px;
+  padding-top: 20px;
   float: left;
   width: 18%;
   background-color: 	#E8E8E8;
   padding-bottom:586px;
 }
+
+#new-room, #room-list-title{
+  display:inline;
+}
+
+#room-list-title {
+  padding-right: 10%;
+}
+
+#new-room-field {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -100px;
+}
+
 
 .App-link {
   color: #61dafb;
