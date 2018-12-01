@@ -37,15 +37,20 @@ const newRoom = { name: this.state.newRoomName};
   this.setState({createOption: true});
   }
 
+  clickedNewRoomCancel(){
+  this.setState({createOption: false});
+  }
+
   createRoom() {
     if (this.state.createOption === true) {
     return(
     <div id="new-room-field">
-    <h2> Create New Room </h2>
-    <h3> Enter a room name </h3>
+    <h3> Create New Room </h3>
+    <p> Enter a room name </p>
     <form onSubmit={ (e) => this.handleSubmit(e) }>
-      <input type="text" value={ this.state.newRoomName} onChange={ (e) => this.handleChange(e) } />
-      <input type="submit" name = "Create Room" />
+      <input id="value-field" type="text" value={ this.state.newRoomName} onChange={ (e) => this.handleChange(e) } />
+      <button id = "cancel-new-rooms" onClick ={()=>this.clickedNewRoomCancel()}> Cancel </button>
+      <button id = "create-room-button" type="submit"> Create Room</button>
     </form>
     </div>
       );
@@ -58,7 +63,6 @@ const newRoom = { name: this.state.newRoomName};
         <section className="room-menu">
         <h2 id="room-list-title">Bloc Chat</h2>
         <button id = "new-room" onClick={() => this.clickedNewRoom()}> New Room </button>
-
         <div className="rooms">
         {
           this.state.rooms.map( (room) =>
@@ -70,7 +74,7 @@ const newRoom = { name: this.state.newRoomName};
         </div>
         </section>
                 {this.createRoom()}
-      </section>
+        </section>
     );
   }
 }

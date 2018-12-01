@@ -24,11 +24,17 @@
   float: left;
   width: 18%;
   background-color: 	#E8E8E8;
-  padding-bottom:586px;
+  min-height: calc(100vh - 20px);
+  color: 		#696969;
 }
 
 #new-room, #room-list-title{
   display:inline;
+  color: 	#696969;
+}
+
+#room-list-title{
+  color: black;
 }
 
 #room-list-title {
@@ -37,12 +43,32 @@
 
 #new-room-field {
   position: fixed;
+  text-align:left;
+  color: 		#696969;
   top: 50%;
   left: 50%;
   margin-top: -50px;
   margin-left: -100px;
+  border-width: 5px 30px 30px 30px;
+  border-color: #F0F0F0;
+  border-style: solid;
+  background-color: 	#F0F0F0;
 }
 
+
+#cancel-new-rooms, #create-room-button {
+  display: inline-block;
+  width: 150px;
+    height: 40px;
+    margin: 5px 5px 5px 5px;
+}
+
+#value-field {
+  display: block;
+  width: 300px;
+    height: 40px;
+    margin-bottom: 10px;
+}
 
 .App-link {
   color: #61dafb;
