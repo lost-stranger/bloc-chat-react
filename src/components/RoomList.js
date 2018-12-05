@@ -12,7 +12,7 @@ class RoomList extends Component {
   }
 
 handleChange(e) {
-  this.setState({ newRoomName: e.target.value })
+  this.setState({ newRoomName: e.target.value });
 }
 
 handleSubmit(e) {
@@ -60,21 +60,27 @@ const newRoom = { name: this.state.newRoomName};
   render(){
     return(
       <section className="room-list">
-        <section className="room-menu">
-        <h2 id="room-list-title">Bloc Chat</h2>
-        <button id = "new-room" onClick={() => this.clickedNewRoom()}> New Room </button>
-        <div className="rooms">
-        {
-          this.state.rooms.map( (room) =>
-          <p id="room">{
-            room.name}
-            </p>
-          )
-        }
-        </div>
-        </section>
-                {this.createRoom()}
-        </section>
+      <section className="room-menu">
+      <h2 id="room-list-title">Bloc Chat</h2>
+      <button id = "new-room" onClick={() => this.clickedNewRoom()}> New Room </button>
+
+      <div className="rooms">
+      {
+        this.state.rooms.map( (room) =>
+        <p id="room"
+        onCLick = {() => this.props.activateRoom(room.name)}>
+        {room.name}
+          </p>
+        )
+      }
+      </div>
+      </section>
+      {this.createRoom()}
+      <div>
+      {this.props.activeRoom}
+      </div>
+      </section>
+
     );
   }
 }
