@@ -70,6 +70,33 @@
     margin-bottom: 10px;
 }
 
+#active-room, #content  {
+  text-align:left;
+  margin-left: 22%;
+}
+
+#active-room {
+  margin-top: 0px;
+  font-size: 20px;
+}
+
+#username {
+  font-weight: bold;
+  margin-right: 60%;
+  text-align: left;
+  margin-left: -10%;
+  display: inline-block;
+}
+
+#time {
+  display:inline-block;
+  font-style: italic;
+}
+
+tr:nth-child(even){
+  background-color: grey;
+}
+
 .App-link {
   color: #61dafb;
 }

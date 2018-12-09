@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import * as firebase from 'firebase';
+
 class RoomList extends Component {
   constructor(props) {
     super(props);
@@ -49,8 +51,8 @@ const newRoom = { name: this.state.newRoomName};
     <p> Enter a room name </p>
     <form onSubmit={ (e) => this.handleSubmit(e) }>
       <input id="value-field" type="text" value={ this.state.newRoomName} onChange={ (e) => this.handleChange(e) } />
-      <button id = "cancel-new-rooms" onClick ={()=>this.clickedNewRoomCancel()}> Cancel </button>
       <button id = "create-room-button" type="submit"> Create Room</button>
+      <button id = "cancel-new-rooms" onClick ={()=>this.clickedNewRoomCancel()}> Cancel </button>
     </form>
     </div>
       );
@@ -68,17 +70,16 @@ const newRoom = { name: this.state.newRoomName};
       {
         this.state.rooms.map( (room) =>
         <p id="room"
-        onCLick = {() => this.props.activateRoom(room.name)}>
+        onClick = {() => this.props.activateRoom(room.name, room.key)}>
         {room.name}
+
           </p>
         )
       }
       </div>
       </section>
       {this.createRoom()}
-      <div>
-      {this.props.activeRoom}
-      </div>
+
       </section>
 
     );

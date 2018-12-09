@@ -1,14 +1,19 @@
 import React, {Component} from 'react';
 
+import * as firebase from 'firebase';
+
 class MessageList extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      messages: []
+      messages: [],
+
     };
 
     this.messagesRef = this.props.firebase.database().ref('messages');
-  }
+
+    }
 
   componentDidMount() {
     this.messagesRef.on('child_added', snapshot => {
@@ -18,24 +23,22 @@ class MessageList extends Component {
     });
   }
 
+
   render(){
     return(
       <section className="message-list">
 
         <div className="messages-per-room">
-        {
-          this.state.messages.map( (message) =>
-          <div id="message">
-          <p>{message.username}</p>
-          <p>{message.content}</p>
-          <p>{message.sentAt}</p>
-          <p>{message.roomID}</p>
-
+          {this.state.messages.filter((message) => {
+            return (this.props.activeRoomId == message.RoomId);
+          }).map((message) =>
+          <div>
+            <p id = "username">{message.username}</p>
+            <p id = "time">{message.sentAt}</p>
+            <p id = "content">{message.content}</p>
             </div>
-          )
-        }
-        </div>
-
+        )}
+            </div>
       </section>
     );
   }

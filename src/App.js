@@ -20,13 +20,15 @@ class App extends Component {
     super(props);
 
     this.state= {
-    activeRoom: "Room 1"
+    activeRoom: null,
+    aciveRoomId: null
   };
 }
 
-  activateRoom(room) {
+  activateRoom(room, roomId) {
     this.setState({
-      activeRoom: `${room}`,
+      activeRoom: room,
+      activeRoomId: roomId
       })
     }
 
@@ -40,20 +42,21 @@ class App extends Component {
         <div>
         <RoomList
         firebase={ firebase }
-        activateRoom = {(room) => this.activateRoom(room)}
+        activateRoom = {(room, roomId) => {this.activateRoom(room, roomId)}}
         />
         </div>
+
+        <h3 id = "active-room">
+        {this.state.activeRoom}
+        </h3>
 
         <div>
         <MessageList
         firebase={ firebase }
+        activeRoomId = {this.state.activeRoomId}
         />
         </div>
-        <section>
-        <div>
-        {this.state.activeRoom}
-        </div>
-        </section>
+
       </div>
     );
   }
