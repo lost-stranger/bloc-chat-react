@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 
-import * as firebase from 'firebase';
-
 class MessageList extends Component {
   constructor(props) {
     super(props);
@@ -30,9 +28,9 @@ class MessageList extends Component {
 
         <div className="messages-per-room">
           {this.state.messages.filter((message) => {
-            return (this.props.activeRoomId == message.RoomId);
-          }).map((message) =>
-          <div>
+            return (this.props.activeRoomId === message.RoomId);
+          }).map((message, index) =>
+          <div key = {index}>
             <p id = "username">{message.username}</p>
             <p id = "time">{message.sentAt}</p>
             <p id = "content">{message.content}</p>

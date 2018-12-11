@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 
-import * as firebase from 'firebase';
-
 class RoomList extends Component {
   constructor(props) {
     super(props);
@@ -25,6 +23,7 @@ handleSubmit(e) {
 });
 const newRoom = { name: this.state.newRoomName};
   this.setState({ rooms: [...this.state.rooms, newRoom], newRoomName: '' });
+  this.clickedNewRoomCancel();
 }
 
   componentDidMount() {
@@ -68,8 +67,8 @@ const newRoom = { name: this.state.newRoomName};
 
       <div className="rooms">
       {
-        this.state.rooms.map( (room) =>
-        <p id="room"
+        this.state.rooms.map( (room, index) =>
+        <p id="room" key = {index}
         onClick = {() => this.props.activateRoom(room.name, room.key)}>
         {room.name}
 
