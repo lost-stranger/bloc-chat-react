@@ -23,7 +23,7 @@ class App extends Component {
     this.state= {
     activeRoom: null,
     activeRoomId: null,
-    activeUsername: "Guest"
+    user: "Guest"
   };
 }
 
@@ -35,9 +35,20 @@ class App extends Component {
     }
 
   setUser(e) {
+    if (e.target.value === null) {
+      this.setState({
+        user: "Guest"
+      });
+    } else {
+    this.setState({
+      user: e.target.value
+    });
+  }
 
+    console.log("Setting active username to " + e.target.value + "...");
     this.setState({activeUsername: e.target.value});
   }
+
 
   render() {
     return (
@@ -58,13 +69,13 @@ class App extends Component {
         </h3>
 
         <h4 id = "guest-name">
-        Welcome: {this.state.activeUsername}
+        Welcome: {this.state.user}
         </h4>
 
         <User
         firebase={ firebase }
-        setUser = { (e) => this.setUser(e)}
-        activeUsername = {this.state.activeUsername}
+        setUser = { (user) => this.setUser(user)}
+        user = {this.state.user}
         />
 
 

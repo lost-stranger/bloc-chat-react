@@ -9,20 +9,19 @@ class User extends Component {
   }
 
   handleSignIn(e){
+    console.log("Signing in...");
     const provider = new this.props.firebase.auth.GoogleAuthProvider();
     this.props.firebase.auth().signInWithPopup( provider );
-    this.componentDidMount();
   }
 
   handleSignOut(e){
     this.props.firebase.auth().signOut();
-    this.componentDidMount();
   }
 
   componentDidMount(){
-    this.props.firebase.auth().onAuthStateChanged( user => {
-      this.props.setUser(user);
-    })
+    this.props.firebase.auth().onAuthStateChanged( e => {
+      this.props.setUser(e)
+    });
   }
 
   showSignInModule(){
@@ -30,9 +29,9 @@ class User extends Component {
   }
 
   signingOption(){
-    if (this.props.activeUsername === "Guest") {
+    if (this.props.user === "Guest") {
       return(
-        <button id = "sign-in-option" onClick={() => this.showSignInModule()}> Sign In </button>
+        <button id = "sign-in-option" onClick={(e) => this.handleSignIn(e)}> Sign In </button>
       );
     }
     else {
@@ -42,27 +41,11 @@ class User extends Component {
     }
   }
 
-  SignInUserModule() {
-    if (this.state.signInModule === true) {
-      return(
-        <div id="Username-Module">
-        <h3> Set a username </h3>
-        <p> This name will appear when you send messages </p>
-        <form onSubmit={ (e) => this.handleSignIn(e) }>
-        <input id="value-field" type="text" onChange = {(e) => this.props.setUser(e)} />
-        <button id = "SignIn-user" type="submit"> Set Username</button>
-        </form>
-        </div>
-      );
-    }
-  }
 
   render(){
     return(
       <section>
-      <div id = "signing-option"> {this.signingOption()} </div>
-      <div>
-      {this.SignInUserModule()}
+      <div id = "signing-option"> {this.signingOption()}
       </div>
       </section>
 
