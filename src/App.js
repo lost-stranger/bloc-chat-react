@@ -34,21 +34,17 @@ class App extends Component {
       })
     }
 
-  setUser(e) {
-    if (e.target.value === null) {
+  setUser(user) {
+    if (user === null) {
       this.setState({
         user: "Guest"
       });
     } else {
     this.setState({
-      user: e.target.value
+      user: user.displayName
     });
   }
-
-    console.log("Setting active username to " + e.target.value + "...");
-    this.setState({activeUsername: e.target.value});
-  }
-
+}
 
   render() {
     return (
@@ -64,13 +60,13 @@ class App extends Component {
         />
         </div>
 
-        <h3 id = "active-room">
+        <h5 id = "active-room">
         {this.state.activeRoom}
-        </h3>
+        </h5>
 
-        <h4 id = "guest-name">
-        Welcome: {this.state.user}
-        </h4>
+        <p id = "guest-name">
+        Welcome {this.state.user}
+        </p>
 
         <User
         firebase={ firebase }

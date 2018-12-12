@@ -78,19 +78,36 @@
 #active-room {
   margin-top: 0px;
   font-size: 20px;
+  margin-right: 10%;
+  margin-left: -40%;
+}
+
+#active-room, #guest-name, #signing-option {
+  display: inline;
+  position: sticky;
+}
+
+#active-room, {
+  margin-top: 10px;
+}
+
+#signing-option {
+  display: inline-block;
 }
 
 #username {
+  position: absolute;
   font-weight: bold;
-  margin-right: 60%;
-  text-align: left;
-  margin-left: -10%;
+  float: left;
+  margin-left: -34%;
+  margin-right: 15%;
   display: inline-block;
 }
 
 #time {
   display:inline-block;
   font-style: italic;
+  margin-left: 5%;
 }
 
 tr:nth-child(even){

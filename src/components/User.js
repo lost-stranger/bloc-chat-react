@@ -3,9 +3,6 @@ import React, {Component} from 'react';
 class User extends Component {
   constructor(props){
     super(props);
-    this.state = {
-      signInModule: null
-    };
   }
 
   handleSignIn(e){
@@ -19,13 +16,9 @@ class User extends Component {
   }
 
   componentDidMount(){
-    this.props.firebase.auth().onAuthStateChanged( e => {
-      this.props.setUser(e)
+    this.props.firebase.auth().onAuthStateChanged( user => {
+      this.props.setUser(user)
     });
-  }
-
-  showSignInModule(){
-    this.setState({signInModule: true});
   }
 
   signingOption(){
