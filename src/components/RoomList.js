@@ -49,7 +49,8 @@ const newRoom = { name: this.state.newRoomName};
     <h3> Create New Room </h3>
     <p> Enter a room name </p>
     <form onSubmit={ (e) => this.handleSubmit(e) }>
-      <input id="value-field" type="text" value={ this.state.newRoomName} onChange={ (e) => this.handleChange(e) } />
+      <input id="value-field" type="text" value={ this.state.newRoomName}
+      onChange={ (e) => this.handleChange(e) } />
       <button id = "create-room-button" type="submit"> Create Room</button>
       <button id = "cancel-new-rooms" onClick ={()=>this.clickedNewRoomCancel()}> Cancel </button>
     </form>

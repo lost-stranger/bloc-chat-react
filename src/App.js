@@ -19,14 +19,12 @@ firebase.initializeApp(config);
 class App extends Component {
   constructor(props) {
     super(props);
-
     this.state= {
     activeRoom: null,
     activeRoomId: null,
     user: "Guest"
   };
 }
-
   activateRoom(room, roomId) {
     this.setState({
       activeRoom: room,
@@ -45,6 +43,7 @@ class App extends Component {
     });
   }
 }
+
 
   render() {
     return (
@@ -67,7 +66,6 @@ class App extends Component {
         <p id = "guest-name">
         Welcome {this.state.user}
         </p>
-
         <User
         firebase={ firebase }
         setUser = { (user) => this.setUser(user)}
@@ -75,10 +73,13 @@ class App extends Component {
         />
 
 
+
         <div>
         <MessageList
         firebase={ firebase }
         activeRoomId = {this.state.activeRoomId}
+        user = {this.state.user}
+        room = {this.state.room}
         />
         </div>
 
